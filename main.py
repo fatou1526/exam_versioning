@@ -9,5 +9,5 @@ def load_data(filepath):
     return df
 
 if __name__ == "__main__":
-    data = load_data('C:/Users/USER/Documents/Master2 DIT/Outil versioning/exam_versioning/CarPrice.csv')
+    data = load_data('exam_versioning/CarPrice.csv')
     print (data.head())

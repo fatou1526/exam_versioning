@@ -20,4 +20,7 @@ jobs:
         run: |
           python -m pipninstall --upgrade pip
           pip install -r requirements.txt
+
+      - name: Run main script
+        run: python main.py
           
