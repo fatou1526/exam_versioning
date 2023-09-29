@@ -56,7 +56,7 @@ def normalize(features):
     return features
 
 if __name__ == "__main__":
-    data = load_data('CarPrice.csv')
+    data = load_data('C:/Users/USER/Documents/Master2 DIT/Outil versioning/exam_versioning/CarPrice.csv')
     print (data.head())
 
     # Remove all categorical columns
@@ -82,3 +82,13 @@ if __name__ == "__main__":
     y_pred = model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
     print(f"The error is {mse}")
+
+    # some statistics of the predicted data
+    mean = np.mean(y_pred)
+    std = np.std(y_pred)
+    min = np.min(y_pred)
+    max = np.max(y_pred)
+    print(f"Mean {mean}")
+    print(f"Standard deviation {std}")
+    print(f"Min {min}")
+    print(f"Max {max}")
