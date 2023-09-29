@@ -56,7 +56,7 @@ def normalize(features):
     return features
 
 if __name__ == "__main__":
-    data = load_data('C:/Users/USER/Documents/Master2 DIT/Outil versioning/exam_versioning/CarPrice.csv')
+    data = load_data('CarPrice.csv')
     print (data.head())
 
     # Remove all categorical columns
