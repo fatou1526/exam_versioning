@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 
 # Load data
 def load_data(filepath):
@@ -38,6 +41,22 @@ def preprocessing_outliers(data_df):
             print(f"There are not outliers at column {i}")
     return data_df
 
+def split_dataset(X, y):
+    # This method helps to split the data to train and test datasets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+    return X_train, X_test, y_train, y_test 
+
+# label encoder
+def encoding(label):
+    le= LabelEncoder()
+    label =le.fit_transform(label)
+    return label
+
+# Normalization/Standardisation
+def normalize(features):
+    features = StandardScaler().fit_transform(features)
+    return features
+
 if __name__ == "__main__":
     data = load_data('CarPrice.csv')
     print (data.head())
@@ -49,3 +68,17 @@ if __name__ == "__main__":
     data = preprocessing_duplicates(data_num)
     data = preprocessing_outliers(data_num)
     data = preprocessing_null(data_num)
+
+    # Feature engineering
+    # Splitting data
+    y = data['price']
+    X = data.drop('price', axis=1)
+    X_train, X_test, y_train, y_test = split_dataset(X, y)
+
+    # y Label encoding
+    y_train = encoding(y_train)
+    y_test = encoding(y_test)
+
+    # Normalize X features
+    X_train = normalize(X_train)
+    X_test = normalize(X_test)
