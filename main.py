@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
 # Load data
 def load_data(filepath):
@@ -82,3 +84,9 @@ if __name__ == "__main__":
     # Normalize X features
     X_train = normalize(X_train)
     X_test = normalize(X_test)
+
+    # Training with the linear regression model
+    model = LinearRegression().fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    print(f"The error is {mse}")
