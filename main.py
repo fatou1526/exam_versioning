@@ -1,3 +1,4 @@
+# SENE NDeye Fatou  Master IA option Data Science DIT
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -48,11 +49,6 @@ def split_dataset(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
     return X_train, X_test, y_train, y_test 
 
-# label encoder
-def encoding(label):
-    le= LabelEncoder()
-    label =le.fit_transform(label)
-    return label
 
 # Normalization/Standardisation
 def normalize(features):
@@ -76,10 +72,6 @@ if __name__ == "__main__":
     y = data['price']
     X = data.drop('price', axis=1)
     X_train, X_test, y_train, y_test = split_dataset(X, y)
-
-    # y Label encoding
-    y_train = encoding(y_train)
-    y_test = encoding(y_test)
 
     # Normalize X features
     X_train = normalize(X_train)
